@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define Tamanho 3
+
+struct tipo_pilha {
+    int dado[Tamanho];
+    int Inicio;
+    int topo;
+};
+
+struct tipo_pilha pilha;
+
+void push(int elemento) {
+    if(pilha.topo == Tamanho) {
+        printf("Pilha cheia. \n");
+        system("pause");
+    } else {
+        pilha.dado[pilha.topo] = elemento;
+        pilha.topo++;
+    }
+}
+
+int pop() {
+    int elemento;
+    if(pilha.topo == pilha.Inicio) {
+        printf("Pilha vazia. \n");
+        system("pause");
+        return -1; // Retorna um valor inválido quando a pilha está vazia
+    } else {
+        pilha.topo--;
+        elemento = pilha.dado[pilha.topo];
+        return elemento;
+    }
+}
+
+int main() {
+    // Inicialize o topo da pilha
+    pilha.topo = 0;
+    pilha.Inicio = 0;
+    
+    // Teste das funções
+    push(1);
+    push(2);
+    push(3);
+    push(4); // Isso deve imprimir "Pilha cheia."
+
+    printf("Elemento retirado: %d\n", pop()); // Deve imprimir o último elemento inserido, que é 3
+    printf("Elemento retirado: %d\n", pop()); // Deve imprimir o próximo elemento, que é 2
+    printf("Elemento retirado: %d\n", pop()); // Deve imprimir o próximo elemento, que é 1
+    printf("Elemento retirado: %d\n", pop()); // Deve imprimir "Pilha vazia." e retornar -1
+
+    return 0;
+}
